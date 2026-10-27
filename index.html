@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="GolArena spor portalı arayüz demosu">
+<meta name="description" content="GoLarena dijital hizmet ve sipariş bilgi sayfası">
 <title>GolArena | Spor Merkezi</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-<div class="demo-strip">DEMO ORTAMI · Gerçek para yatırma, bahis veya tahsilat yapılmaz</div>
+<div class="demo-strip">GO LARENA · Dijital hizmetler ve sipariş bilgilendirmesi</div>
 <header class="topbar">
   <a class="brand" href="#"><span class="logo">G</span> GOL<span>ARENA</span></a>
   <nav><a href="#matches">Maç Merkezi</a><a href="#live">Canlı Skor</a><a href="#promos">Öne Çıkanlar</a></nav>
@@ -62,17 +62,21 @@
   </section>
 
   <section class="panel" id="depositPanel">
-    <div class="panel-title"><div><span class="kicker">CÜZDAN</span><h2>Havale / EFT bildirimi</h2></div><span class="pill amber">DEMO İŞLEM</span></div>
-    <p class="subtext">Gerçek IBAN kullanılmaz. Para gönderme talimatı veya gerçek ödeme onayı verilmez. Form, yalnızca örnek talep oluşturur.</p>
+    <div class="panel-title"><div><span class="kicker">SİPARİŞ ÖDEMESİ</span><h2>Havale / EFT ile ödeme</h2></div><span class="pill amber">BANKA BİLGİSİ EKLENECEK</span></div>
+    <p class="subtext">Dijital hizmet siparişiniz için havale/EFT bilgileri. Ödeme yapmadan önce alıcı adını ve IBAN bilgisini site yöneticisinden doğrulayın. Bu sayfa tek başına banka transferini doğrulamaz.</p>
+    <div class="form-grid">
+      <div class="wide demo-bank"><div><span class="tiny-green">BANKA</span><strong>Garanti BBVA</strong><p>Alıcı adı: <b>Yönetici tarafından eklenecek</b><br>IBAN: <b>Yönetici tarafından eklenecek</b></p><p>Gerçek alıcı adı ve IBAN bilgisi site sahibi tarafından doğrulanıp eklenmelidir.</p></div><span class="bank-symbol">₺</span></div>
+    </div>
     <form id="depositForm" class="form-grid">
-      <label>Örnek tutar (₺)<select id="amount"><option value="100">₺100</option><option value="250">₺250</option><option value="500">₺500</option><option value="1000">₺1.000</option></select></label>
-      <label>Gönderen adı (örnek)<input id="sender" placeholder="Örnek Kullanıcı" maxlength="60"></label>
-      <label class="wide">Açıklama (isteğe bağlı)<input id="depositNote" placeholder="Demo işlem notu" maxlength="120"></label>
-      <div class="wide demo-bank"><div><span class="tiny-green">DEMO ÖDEME BİLGİSİ</span><strong>Gerçek banka bilgisi gösterilmiyor</strong><p>Bu ekran ödeme talebi arayüzünü göstermek içindir. Para göndermeyin.</p></div><span class="bank-symbol">₺</span></div>
-      <button class="btn green wide" type="submit">Demo ödeme talebi oluştur</button>
+      <label>Sipariş tutarı (₺)<select id="amount"><option value="100">₺100</option><option value="250">₺250</option><option value="500">₺500</option><option value="1000">₺1.000</option><option value="2500">₺2.500</option></select></label>
+      <label>Hizmet / sipariş adı<input id="serviceName" placeholder="Satın alınan dijital hizmet" maxlength="100" required></label>
+      <label>Havale yapan kişinin adı<input id="sender" placeholder="Ad soyad" maxlength="60" required></label>
+      <label>Banka işlem açıklaması<input id="depositNote" placeholder="Sipariş numarası veya açıklama" maxlength="120"></label>
+      <p class="wide subtext">Form gönderimi bu tarayıcıda bir ödeme bildirimi taslağı oluşturur. Bildirimin yöneticiye ulaşması ve ödemenin gerçek olarak doğrulanması için sunucu bağlantısı gerekir.</p>
+      <button class="btn green wide" type="submit">Havale bildirimi oluştur</button>
     </form>
     <div id="depositResult" class="notice" aria-live="polite"></div>
-    <div class="history-wrap"><div class="panel-title"><h3>Ödeme taleplerim</h3><button class="text-btn" id="clearHistory">Demo geçmişini temizle</button></div><div id="paymentHistory" class="history-list"><p class="muted">Henüz demo talebi oluşturulmadı.</p></div></div>
+    <div class="history-wrap"><div class="panel-title"><h3>Ödeme bildirimleri</h3><button class="text-btn" id="clearHistory">Geçmişi temizle</button></div><div id="paymentHistory" class="history-list"><p class="muted">Henüz ödeme bildirimi yok.</p></div></div>
   </section>
 
   <section class="two-col">
@@ -81,7 +85,7 @@
   </section>
 
   <section class="panel admin" id="admin"><div class="panel-title"><div><span class="kicker">YÖNETİCİ ALANI</span><h2>Demo yönetim paneli</h2></div><span class="pill amber">YALNIZCA BU TARAYICI</span></div><p class="subtext">Aşağıdaki kayıtlar sadece bu sayfa açıkken bellekte tutulur. Gerçek yönetici girişi veya sunucu kaydı yoktur.</p><div class="admin-tabs"><button class="tab active" data-tab="messages">Destek mesajları <span id="messageCount">0</span></button><button class="tab" data-tab="payments">Ödeme talepleri <span id="paymentCount">0</span></button></div><div id="adminMessages" class="admin-list"><p class="muted">Henüz destek mesajı yok.</p></div><div id="adminPayments" class="admin-list" hidden><p class="muted">Henüz ödeme talebi yok.</p></div><div class="admin-actions"><button class="btn outline" id="clearSupport">Destek kayıtlarını temizle</button><button class="btn outline" id="clearAll">Tüm demo kayıtlarını temizle</button></div></section>
-  <footer>© 2026 GolArena · Spor portalı arayüz demosu · Gerçek bahis veya ödeme hizmeti sunmaz.</footer>
+  <footer>© 2026 GoLarena · Dijital hizmet sipariş bilgilendirmesi</footer>
 </main>
 </div>
 
@@ -133,10 +137,10 @@ function renderPaymentHistory() {
       const strong = document.createElement('strong');
       strong.textContent = `${formatTRY(req.amount)} · ${req.id}`;
       const small = document.createElement('small');
-      small.textContent = `${req.sender || 'Örnek kullanıcı'} · ${req.time}`;
+      small.textContent = `${req.service || 'Dijital hizmet'} · ${req.sender || 'Gönderen belirtilmedi'} · ${req.time}`;
       info.append(strong, small);
       const state = document.createElement('span');
-      state.className = 'state'; state.textContent = 'DEMO / BEKLEMEDE';
+      state.className = 'state'; state.textContent = 'DOĞRULANMADI';
       item.append(info, state); target.appendChild(item);
     });
   });
@@ -147,9 +151,10 @@ $('depositForm').addEventListener('submit', e => {
   const amount = Number($('amount').value);
   const sender = $('sender').value.trim();
   const note = $('depositNote').value.trim();
-  const id = 'DEMO-' + String(paymentRequests.length + 1).padStart(4, '0');
-  paymentRequests.push({ id, amount, sender, note, time: new Date().toLocaleString('tr-TR') });
-  $('depositResult').textContent = `Demo talep oluşturuldu: ${id}. Durum: Beklemede. Para gönderilmedi, bakiye değişmedi ve gerçek ödeme onayı verilmedi.`;
+  const service = $('serviceName').value.trim();
+  const id = 'GL-' + Date.now().toString().slice(-8);
+  paymentRequests.push({ id, amount, sender, note, service, time: new Date().toLocaleString('tr-TR') });
+  $('depositResult').textContent = `Bildirim taslağı oluşturuldu: ${id}. Bu bildirim henüz sunucuya gönderilmedi ve ödeme doğrulanmadı.`;
   $('depositForm').reset();
   renderPaymentHistory();
 });
