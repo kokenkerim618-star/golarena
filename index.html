@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="GolArena spor portalı arayüz demosu">
+<title>GolArena | Spor Merkezi</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#080e0d;--panel:#101a17;--panel2:#15231e;--line:#263b32;--text:#edf7f1;--muted:#91a69a;--green:#49f0a2;--green2:#23c77a;--amber:#ffd27c;--red:#ff7272}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#11261d 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}.demo-strip{text-align:center;padding:8px 12px;background:#3a2a0f;color:#ffe2a2;font-size:10px;font-weight:800;letter-spacing:.06em}.topbar{height:72px;position:sticky;top:0;z-index:5;background:#0a120fef;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:36px;padding:0 4.5%}.brand{display:flex;align-items:center;gap:7px;color:white;text-decoration:none;font-weight:900;font-size:19px;letter-spacing:-.7px;white-space:nowrap}.brand>span:last-child{color:var(--green)}.logo{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;background:var(--green);color:#07120d}.topbar nav{display:flex;gap:24px;flex:1}.topbar nav a{font-size:12px;color:#a8b9af;text-decoration:none}.topbar nav a:hover{color:var(--green)}.top-actions{display:flex;gap:9px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 15px;border-radius:8px;border:1px solid transparent;font:700 11px Inter,Arial,sans-serif;cursor:pointer;text-decoration:none;transition:.18s}.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}.green{background:var(--green);color:#07150d}.outline{background:#17241e;color:#dcebe1;border-color:#344b3e}.glass{background:#ffffff0a;color:white;border-color:#426254}.full{width:100%}.shell{max-width:1440px;margin:auto;display:grid;grid-template-columns:210px minmax(0,1fr)}.sidebar{padding:26px 14px;border-right:1px solid var(--line);min-height:calc(100vh - 72px)}.side-caption,.kicker,.tiny-green{font-size:9px;font-weight:900;letter-spacing:.15em;color:var(--green)}.side-caption{padding:0 11px;margin-bottom:15px;color:#738c7e}.side-link{display:flex;align-items:center;gap:11px;padding:12px 11px;margin-bottom:4px;border-radius:8px;text-decoration:none;color:#a9bcb0;font-size:12px}.side-link.active,.side-link:hover{background:#163326;color:var(--green)}.sidebar-card{margin:34px 5px 0;border:1px solid #294438;border-radius:11px;padding:14px;background:linear-gradient(145deg,#142b20,#101a16)}.sidebar-card p{font-size:11px;color:#a2b6a9;line-height:1.7;margin-bottom:0}.main{padding:25px 28px;min-width:0}.hero{min-height:240px;position:relative;overflow:hidden;border:1px solid #2a5b43;border-radius:17px;padding:32px 36px;display:flex;align-items:center;background:radial-gradient(ellipse at 80% 40%,#1b6b42 0,transparent 37%),linear-gradient(105deg,#132a1d,#101d17 63%,#14251b)}.hero-text{position:relative;z-index:2}.hero h1{font-size:clamp(31px,4vw,48px);letter-spacing:-2px;line-height:1.04;margin:12px 0}.hero h1 em{color:var(--green);font-style:normal}.hero p{font-size:12px;color:#b4c9bb;margin:0 0 21px}.hero-buttons{display:flex;gap:9px}.hero-art{position:absolute;right:5%;top:0;width:34%;height:100%;display:grid;place-items:center}.ball{font-size:95px;z-index:2;filter:drop-shadow(0 20px 24px #0009);transform:rotate(-16deg)}.orb{position:absolute;border-radius:50%;border:1px solid #67f5a42a}.orb1{width:200px;height:200px}.orb2{width:145px;height:145px}.art-tag{position:absolute;right:0;bottom:27px;transform:rotate(-8deg);font-size:9px;letter-spacing:.15em;color:#a8f6c9;border:1px solid #55db914d;background:#0a1d13bb;padding:8px 11px;border-radius:5px}.art-tag b{font-size:13px}.wallet-row{display:grid;grid-template-columns:1.5fr 1fr;gap:13px;margin-top:15px}.balance-card{background:linear-gradient(120deg,#14291e,#102019);border:1px solid #2d5a40;border-radius:13px;padding:20px}.balance-top{display:flex;justify-content:space-between;gap:10px;font-size:9px;letter-spacing:.1em;color:#a6b9ab;font-weight:800}.status-dot{color:var(--green)}.balance{font-size:31px;font-weight:900;letter-spacing:-1px;margin-top:12px}.balance-card p,.quick-card p{font-size:10px;color:var(--muted);line-height:1.6}.balance-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.quick-card{display:flex;gap:13px;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:18px}.quick-icon{width:39px;height:39px;display:grid;place-items:center;background:#1a3828;color:var(--green);border-radius:10px;font-size:23px}.quick-card strong{font-size:12px}.quick-card p{margin-bottom:0}.section{margin-top:27px}.section-title,.panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-title{margin-bottom:13px}.section-title h2,.panel h2{font-size:18px;letter-spacing:-.6px;margin:6px 0 0}.pill{background:#1a3426;color:var(--green);border-radius:5px;padding:6px 8px;font-size:8px;font-weight:900;letter-spacing:.07em;white-space:nowrap}.pill.amber{color:var(--amber);background:#3a2c15}.match-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.match,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px}.match{padding:14px}.league{font-size:9px;font-weight:800;color:#9eb2a4;padding-bottom:12px;border-bottom:1px solid var(--line)}.league span{float:right;color:var(--green);font-size:8px}.match-teams{display:grid;gap:12px;padding:15px 0;font-size:11px;font-weight:700}.match-teams>div{display:flex;align-items:center;gap:9px}.match-teams strong{font-size:14px;color:var(--amber);margin-left:27px}.crest{width:25px;height:25px;border-radius:7px;display:grid;place-items:center;font-style:normal;font-size:10px}.red{background:#682b30}.yellow{background:#61501b}.blue{background:#204b6d}.white{background:#dbe8df;color:#15221a}.green{ }.crest.green{background:#1e5d3b;color:white}.dark{background:#27372e}.match-bottom{border-top:1px solid var(--line);padding-top:11px;display:flex;justify-content:space-between;color:#9aafa1;font-size:9px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:14px}.panel{padding:18px;margin-top:14px}.two-col .panel{margin-top:0}.panel-title h2{margin:0}.tiny-green{font-size:8px}.empty{text-align:center;padding:25px 15px 12px}.empty-icon{font-size:30px;color:var(--green)}.empty strong{display:block;font-size:12px;margin:10px 0 5px}.empty p,.subtext{font-size:10px;line-height:1.7;color:var(--muted)}.news-row{display:flex;gap:11px;margin-top:19px}.news-icon{width:36px;height:36px;flex-shrink:0;border-radius:9px;background:#1a3526;display:grid;place-items:center;font-size:17px}.news-row strong{font-size:11px}.news-row p{font-size:10px;color:var(--muted);line-height:1.6;margin:5px 0}.online{color:var(--green);font-size:9px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}.form-grid label,.modal label,.support-form label{display:grid;gap:7px;font-size:10px;font-weight:700;color:#d2e0d6}.form-grid input,.form-grid select,.modal input,.support-form input{width:100%;min-width:0;background:#09120e;color:#eef8f1;border:1px solid #30473a;border-radius:7px;padding:12px;font:400 11px Inter,Arial,sans-serif;outline:none}.form-grid input:focus,.form-grid select:focus,.modal input:focus,.support-form input:focus{border-color:var(--green)}.wide{grid-column:1/-1}.demo-bank{border:1px dashed #3c5d47;background:#102219;border-radius:9px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}.demo-bank strong{display:block;font-size:11px;margin-top:7px}.demo-bank p{font-size:10px;color:var(--muted);margin:6px 0 0}.bank-symbol{width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:#1b3d2a;color:var(--green);font-size:20px}.notice{font-size:10px;color:var(--green);line-height:1.6;margin-top:10px;overflow-wrap:anywhere}.history-wrap{margin-top:22px;border-top:1px solid var(--line);padding-top:17px}.history-wrap h3{font-size:13px;margin:0}.text-btn{background:none;border:0;color:var(--green);font-size:9px;cursor:pointer}.history-list,.admin-list{display:grid;gap:8px;margin-top:12px}.history-item,.admin-item{background:#0a130f;border:1px solid #263b30;border-radius:8px;padding:11px;font-size:10px}.history-item{display:flex;justify-content:space-between;gap:12px;align-items:center}.history-item strong{display:block;font-size:11px;margin-bottom:4px}.history-item small,.muted{color:var(--muted);font-size:10px;line-height:1.6}.state{font-size:8px;font-weight:900;color:var(--amber);background:#3a2c15;padding:5px 7px;border-radius:5px;white-space:nowrap}.support-form{display:flex;gap:9px;align-items:end;margin-top:13px}.support-form label{flex:1}.auth-buttons{display:flex;gap:9px;margin-top:20px}.admin{margin-top:14px}.admin-tabs{display:flex;gap:8px;margin-top:17px;border-bottom:1px solid var(--line);padding-bottom:9px}.tab{background:transparent;color:#9cb0a2;border:1px solid transparent;padding:9px 10px;border-radius:7px;font:700 10px Inter;cursor:pointer}.tab span{display:inline-grid;place-items:center;background:#24372c;border-radius:20px;padding:2px 6px;margin-left:5px}.tab.active{color:var(--green);background:#183326;border-color:#315841}.admin-item strong{display:block;font-size:11px;margin-bottom:5px}.admin-item p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}.admin-item small{display:block;color:var(--muted);margin-top:8px}.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.admin-actions .btn{font-size:9px;padding:9px}footer{text-align:center;padding:27px 0 8px;color:#6e8677;font-size:9px}.modal-bg{position:fixed;inset:0;z-index:20;background:#000c;display:grid;place-items:center;padding:20px}.modal-bg[hidden]{display:none}.modal{position:relative;width:min(100%,390px);border:1px solid #355442;border-radius:15px;padding:26px;background:#111e17;box-shadow:0 25px 90px #000a}.modal h2{margin:8px 0;font-size:22px}.modal form{display:grid;gap:13px;margin-top:17px}.x{position:absolute;right:13px;top:9px;background:none;border:0;color:#d8e8dc;font-size:27px;cursor:pointer}
+@media(max-width:900px){.topbar{padding:0 18px;gap:20px}.topbar nav{gap:12px}.shell{grid-template-columns:175px minmax(0,1fr)}.main{padding:20px}.hero{padding:27px}.hero-art{right:1%}.match-grid{grid-template-columns:1fr 1fr}.match:last-child{display:none}}
+@media(max-width:650px){.topbar{height:auto;min-height:66px;flex-wrap:wrap;gap:10px;padding:12px}.topbar nav{order:3;flex-basis:100%;overflow:auto;padding:5px 0}.top-actions{margin-left:auto}.top-actions .btn{padding:9px 10px}.shell{display:block}.sidebar{display:none}.main{padding:13px}.hero{min-height:220px;padding:22px 18px}.hero h1{font-size:32px}.hero p{max-width:230px;line-height:1.6}.hero-art{right:-10%;opacity:.6}.ball{font-size:65px}.art-tag{display:none}.wallet-row,.two-col,.match-grid{grid-template-columns:1fr}.match:last-child{display:block}.balance{font-size:28px}.quick-card{min-height:90px}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.support-form{flex-direction:column;align-items:stretch}.support-form .btn{min-height:40px}.section-title h2,.panel h2{font-size:16px}.panel{padding:14px}.history-item{align-items:flex-start}.admin-tabs{overflow:auto}.tab{white-space:nowrap}.demo-bank{align-items:flex-start}.demo-bank p{max-width:260px}}
+
+</style>
+</head>
+<body>
+<div class="demo-strip">DEMO ORTAMI · Gerçek para yatırma, bahis veya tahsilat yapılmaz</div>
+<header class="topbar">
+  <a class="brand" href="#"><span class="logo">G</span> GOL<span>ARENA</span></a>
+  <nav><a href="#matches">Maç Merkezi</a><a href="#live">Canlı Skor</a><a href="#promos">Öne Çıkanlar</a></nav>
+  <div class="top-actions"><button class="btn outline" data-auth="login">Giriş Yap</button><button class="btn green" data-auth="register">Üye Ol</button></div>
+</header>
+<div class="shell">
+<aside class="sidebar">
+  <div class="side-caption">ANA MENÜ</div>
+  <a class="side-link active" href="#matches">⚽ <span>Maç Merkezi</span></a>
+  <a class="side-link" href="#live">📊 <span>Canlı Skorlar</span></a>
+  <a class="side-link" href="#wallet">💳 <span>Cüzdan / Ödeme</span></a>
+  <a class="side-link" href="#support">💬 <span>Canlı Destek</span></a>
+  <a class="side-link" href="#admin">🛠️ <span>Demo Yönetim</span></a>
+  <div class="sidebar-card"><span class="tiny-green">SPOR GÜNDEMİ</span><p>Fikstürleri, örnek skorları ve spor gündemini tek yerde takip et.</p></div>
+</aside>
+<main class="main">
+  <section class="hero">
+    <div class="hero-text"><span class="kicker">GOLARENA SPOR MERKEZİ</span><h1>Heyecanı <em>takip et.</em></h1><p>Maçlar, fikstürler ve spor istatistikleri için modern merkez.</p><div class="hero-buttons"><a class="btn green" href="#matches">Maçları keşfet <span>↗</span></a><a class="btn glass" href="#wallet">Demo cüzdan</a></div></div>
+    <div class="hero-art" aria-hidden="true"><div class="orb orb1"></div><div class="orb orb2"></div><div class="ball">⚽</div><div class="art-tag">MATCH<br><b>CENTER</b></div></div>
+  </section>
+
+  <section class="wallet-row" id="wallet">
+    <div class="balance-card">
+      <div class="balance-top"><span>DEMO CÜZDAN BAKİYESİ</span><span class="status-dot">● ÖRNEK</span></div>
+      <div class="balance" id="balance">₺1.250,00</div>
+      <p>Gerçek para içermez; yalnızca arayüz gösterimidir.</p>
+      <div class="balance-actions"><button class="btn green" id="openDeposit">＋ Havale bildirimi</button><button class="btn outline" id="openHistory">İşlem geçmişi</button></div>
+    </div>
+    <div class="quick-card"><div class="quick-icon">↗</div><div><strong>Kolay takip</strong><p>Örnek ödeme taleplerinin durumunu bu sayfada görebilirsin.</p></div></div>
+  </section>
+
+  <section class="section" id="matches">
+    <div class="section-title"><div><span class="kicker">GÜNÜN SEÇKİSİ</span><h2>Maç Merkezi</h2></div><span class="pill">DEMO FİKSTÜR</span></div>
+    <div class="match-grid">
+      <article class="match"><div class="league">🇹🇷 TÜRKİYE · ÖRNEK LİG <span>BUGÜN</span></div><div class="match-teams"><div><i class="crest red">İ</i><span>İstanbul FK</span></div><strong>— : —</strong><div><i class="crest yellow">A</i><span>Ankara SK</span></div></div><div class="match-bottom"><span>20:00</span><span>Örnek fikstür</span></div></article>
+      <article class="match"><div class="league">🇪🇺 AVRUPA · ÖRNEK LİG <span>BUGÜN</span></div><div class="match-teams"><div><i class="crest blue">M</i><span>Mavişehir</span></div><strong>— : —</strong><div><i class="crest white">K</i><span>Kuzey Spor</span></div></div><div class="match-bottom"><span>21:45</span><span>Örnek fikstür</span></div></article>
+      <article class="match"><div class="league">🌍 ULUSLARARASI · ÖRNEK <span>YARIN</span></div><div class="match-teams"><div><i class="crest green">Y</i><span>Yeşilova</span></div><strong>— : —</strong><div><i class="crest dark">S</i><span>Sahil FC</span></div></div><div class="match-bottom"><span>19:30</span><span>Örnek fikstür</span></div></article>
+    </div>
+  </section>
+
+  <section class="two-col">
+    <article class="panel" id="live"><div class="panel-title"><h2>Canlı skorlar</h2><span class="pill">DEMO</span></div><div class="empty"><span class="empty-icon">◷</span><strong>Canlı veri bağlantısı yok</strong><p>Buradaki fikstür ve skorlar örnektir. Gerçek skorlar için lisanslı veri sağlayıcısı gerekir.</p></div></article>
+    <article class="panel" id="promos"><div class="panel-title"><h2>Spor gündemi</h2><span class="tiny-green">ÖNE ÇIKAN</span></div><div class="news-row"><div class="news-icon">⚡</div><div><strong>Maç öncesi analizler</strong><p>Takım formu, fikstür ve istatistikler için örnek içerik alanı.</p></div></div><div class="news-row"><div class="news-icon">📈</div><div><strong>İstatistik panosu</strong><p>Takım performanslarını karşılaştırmak için örnek alan.</p></div></div></article>
+  </section>
+
+  <section class="panel" id="depositPanel">
+    <div class="panel-title"><div><span class="kicker">CÜZDAN</span><h2>Havale / EFT bildirimi</h2></div><span class="pill amber">DEMO İŞLEM</span></div>
+    <p class="subtext">Gerçek IBAN kullanılmaz. Para gönderme talimatı veya gerçek ödeme onayı verilmez. Form, yalnızca örnek talep oluşturur.</p>
+    <form id="depositForm" class="form-grid">
+      <label>Örnek tutar (₺)<select id="amount"><option value="100">₺100</option><option value="250">₺250</option><option value="500">₺500</option><option value="1000">₺1.000</option></select></label>
+      <label>Gönderen adı (örnek)<input id="sender" placeholder="Örnek Kullanıcı" maxlength="60"></label>
+      <label class="wide">Açıklama (isteğe bağlı)<input id="depositNote" placeholder="Demo işlem notu" maxlength="120"></label>
+      <div class="wide demo-bank"><div><span class="tiny-green">DEMO ÖDEME BİLGİSİ</span><strong>Gerçek banka bilgisi gösterilmiyor</strong><p>Bu ekran ödeme talebi arayüzünü göstermek içindir. Para göndermeyin.</p></div><span class="bank-symbol">₺</span></div>
+      <button class="btn green wide" type="submit">Demo ödeme talebi oluştur</button>
+    </form>
+    <div id="depositResult" class="notice" aria-live="polite"></div>
+    <div class="history-wrap"><div class="panel-title"><h3>Ödeme taleplerim</h3><button class="text-btn" id="clearHistory">Demo geçmişini temizle</button></div><div id="paymentHistory" class="history-list"><p class="muted">Henüz demo talebi oluşturulmadı.</p></div></div>
+  </section>
+
+  <section class="two-col">
+    <article class="panel" id="support"><div class="panel-title"><div><span class="kicker">YARDIM MERKEZİ</span><h2>Canlı destek</h2></div><span class="online">● DEMO</span></div><p class="subtext">Mesajlar aşağıdaki demo yönetim panelinde görünür; sunucuya gönderilmez.</p><form id="supportForm" class="support-form"><label>Mesajın<input id="supportMessage" placeholder="Nasıl yardımcı olabiliriz?" maxlength="500" required></label><button class="btn green" type="submit">Gönder ↗</button></form><div id="supportStatus" class="notice" aria-live="polite"></div></article>
+    <article class="panel" id="account"><div class="panel-title"><h2>Üyelik</h2><span class="pill">DEMO FORM</span></div><p class="subtext">Gerçek hesap oluşturmaz, şifre saklamaz veya doğrulama yapmaz.</p><div class="auth-buttons"><button class="btn green" data-auth="register">Üye ol</button><button class="btn outline" data-auth="login">Giriş yap</button></div><div id="authInlineResult" class="notice" aria-live="polite"></div></article>
+  </section>
+
+  <section class="panel admin" id="admin"><div class="panel-title"><div><span class="kicker">YÖNETİCİ ALANI</span><h2>Demo yönetim paneli</h2></div><span class="pill amber">YALNIZCA BU TARAYICI</span></div><p class="subtext">Aşağıdaki kayıtlar sadece bu sayfa açıkken bellekte tutulur. Gerçek yönetici girişi veya sunucu kaydı yoktur.</p><div class="admin-tabs"><button class="tab active" data-tab="messages">Destek mesajları <span id="messageCount">0</span></button><button class="tab" data-tab="payments">Ödeme talepleri <span id="paymentCount">0</span></button></div><div id="adminMessages" class="admin-list"><p class="muted">Henüz destek mesajı yok.</p></div><div id="adminPayments" class="admin-list" hidden><p class="muted">Henüz ödeme talebi yok.</p></div><div class="admin-actions"><button class="btn outline" id="clearSupport">Destek kayıtlarını temizle</button><button class="btn outline" id="clearAll">Tüm demo kayıtlarını temizle</button></div></section>
+  <footer>© 2026 GolArena · Spor portalı arayüz demosu · Gerçek bahis veya ödeme hizmeti sunmaz.</footer>
+</main>
+</div>
+
+<div class="modal-bg" id="authModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle"><button class="x" id="closeAuth" aria-label="Kapat">×</button><span class="kicker">GOLARENA HESABI</span><h2 id="authTitle">Üye ol</h2><p class="subtext">Demo formudur; gerçek kullanıcı hesabı oluşturmaz.</p><form id="authForm"><label>E-posta<input id="authEmail" type="email" placeholder="ornek@eposta.com" required></label><label>Şifre<input id="authPassword" type="password" placeholder="En az 6 karakter" minlength="6" required></label><button class="btn green full" id="authSubmit" type="submit">Demo hesabı oluştur</button></form><div id="authResult" class="notice"></div></section></div>
+<div class="modal-bg" id="historyModal" hidden><section class="modal"><button class="x" id="closeHistory" aria-label="Kapat">×</button><span class="kicker">CÜZDAN</span><h2>İşlem geçmişi</h2><div id="modalHistory"></div></section></div>
+<script>
+// GolArena front-end demo only. No real accounts, server storage, or money movement.
+const $ = (id) => document.getElementById(id);
+const paymentRequests = [];
+const supportMessages = [];
+let demoBalance = 1250;
+let authMode = 'register';
+
+function formatTRY(value) {
+  return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(value);
+}
+function refreshBalance() { $('balance').textContent = formatTRY(demoBalance); }
+function showAuth(mode) {
+  authMode = mode;
+  $('authTitle').textContent = mode === 'register' ? 'Üye ol' : 'Giriş yap';
+  $('authSubmit').textContent = mode === 'register' ? 'Demo hesabı oluştur' : 'Demo giriş';
+  $('authResult').textContent = '';
+  $('authModal').hidden = false;
+}
+document.querySelectorAll('[data-auth]').forEach(btn => btn.addEventListener('click', () => showAuth(btn.dataset.auth)));
+$('closeAuth').addEventListener('click', () => $('authModal').hidden = true);
+$('authModal').addEventListener('click', e => { if (e.target === $('authModal')) $('authModal').hidden = true; });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { $('authModal').hidden = true; $('historyModal').hidden = true; } });
+$('authForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = $('authEmail').value.trim();
+  $('authResult').textContent = `${authMode === 'register' ? 'Kayıt' : 'Giriş'} demosu tamamlandı (${email}). Gerçek hesap oluşturulmadı ve parola saklanmadı.`;
+  $('authInlineResult').textContent = 'Bu yalnızca demo formudur; gerçek oturum açılmadı.';
+});
+
+function renderPaymentHistory() {
+  const targets = [$('paymentHistory'), $('modalHistory'), $('adminPayments')];
+  targets.forEach(target => {
+    target.replaceChildren();
+    if (!paymentRequests.length) {
+      const p = document.createElement('p');
+      p.className = 'muted'; p.textContent = 'Henüz demo talebi oluşturulmadı.';
+      target.appendChild(p); return;
+    }
+    paymentRequests.slice().reverse().forEach(req => {
+      const item = document.createElement('div');
+      item.className = 'history-item';
+      const info = document.createElement('div');
+      const strong = document.createElement('strong');
+      strong.textContent = `${formatTRY(req.amount)} · ${req.id}`;
+      const small = document.createElement('small');
+      small.textContent = `${req.sender || 'Örnek kullanıcı'} · ${req.time}`;
+      info.append(strong, small);
+      const state = document.createElement('span');
+      state.className = 'state'; state.textContent = 'DEMO / BEKLEMEDE';
+      item.append(info, state); target.appendChild(item);
+    });
+  });
+  $('paymentCount').textContent = paymentRequests.length;
+}
+$('depositForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const amount = Number($('amount').value);
+  const sender = $('sender').value.trim();
+  const note = $('depositNote').value.trim();
+  const id = 'DEMO-' + String(paymentRequests.length + 1).padStart(4, '0');
+  paymentRequests.push({ id, amount, sender, note, time: new Date().toLocaleString('tr-TR') });
+  $('depositResult').textContent = `Demo talep oluşturuldu: ${id}. Durum: Beklemede. Para gönderilmedi, bakiye değişmedi ve gerçek ödeme onayı verilmedi.`;
+  $('depositForm').reset();
+  renderPaymentHistory();
+});
+$('openDeposit').addEventListener('click', () => $('depositPanel').scrollIntoView({ behavior: 'smooth' }));
+$('openHistory').addEventListener('click', () => { renderPaymentHistory(); $('historyModal').hidden = false; });
+$('closeHistory').addEventListener('click', () => $('historyModal').hidden = true);
+$('historyModal').addEventListener('click', e => { if (e.target === $('historyModal')) $('historyModal').hidden = true; });
+$('clearHistory').addEventListener('click', () => {
+  paymentRequests.length = 0; $('depositResult').textContent = ''; renderPaymentHistory();
+});
+
+function renderSupport() {
+  const root = $('adminMessages'); root.replaceChildren();
+  $('messageCount').textContent = supportMessages.length;
+  if (!supportMessages.length) {
+    const p = document.createElement('p'); p.className = 'muted'; p.textContent = 'Henüz destek mesajı yok.'; root.appendChild(p); return;
+  }
+  supportMessages.slice().reverse().forEach(msg => {
+    const item = document.createElement('article'); item.className = 'admin-item';
+    const title = document.createElement('strong'); title.textContent = 'Yeni destek mesajı';
+    const p = document.createElement('p'); p.textContent = msg.text;
+    const small = document.createElement('small'); small.textContent = msg.time;
+    item.append(title, p, small); root.appendChild(item);
+  });
+}
+$('supportForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = $('supportMessage'); const message = input.value.trim(); if (!message) return;
+  supportMessages.push({ text: message, time: new Date().toLocaleString('tr-TR') });
+  input.value = '';
+  $('supportStatus').textContent = 'Mesaj demo yönetim panelinde gösteriliyor. Sunucuya gönderilmedi.';
+  renderSupport();
+});
+$('clearSupport').addEventListener('click', () => { supportMessages.length = 0; $('supportStatus').textContent = ''; renderSupport(); });
+$('clearAll').addEventListener('click', () => {
+  paymentRequests.length = 0; supportMessages.length = 0; $('depositResult').textContent = ''; $('supportStatus').textContent = '';
+  renderPaymentHistory(); renderSupport();
+});
+document.querySelectorAll('[data-tab]').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b === btn));
+  const showPayments = btn.dataset.tab === 'payments';
+  $('adminMessages').hidden = showPayments; $('adminPayments').hidden = !showPayments;
+  renderPaymentHistory(); renderSupport();
+}));
+refreshBalance(); renderPaymentHistory(); renderSupport();
+
+</script>
+</body>
+</html>
